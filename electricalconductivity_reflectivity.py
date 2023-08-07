@@ -321,20 +321,6 @@ plt.show()
 
 "Pressure, Us, Reflectivity"
 
-fig = plt.figure('Pressure-U_S')
-ax1 = fig.add_subplot(111)
-ax1.scatter(usr_38691, temp_38691)
-ax1.scatter(usr_38692, temp_38692)
-ax1.scatter(usr_38693, temp_38693)
-ax2 = ax1.twinx()
-ax2.plot(usr_38691, p38691, label = 'MgO')
-ax2.plot(usr_38692, p38692, label = '(Mg$_{0.98}$,Fe$_{0.02}$)O')
-ax2.plot(usr_38693, p38693, label = '(Mg$_{0.95}$,Fe$_{0.05}$)O')
-ax2.set_xlabel('U$_S$ (km/s)')
-ax2.set_ylabel('Pressure (GPa)')
-ax2.legend()
-plt.show()
-
 fig = plt.figure('Pressure-U_S-Reflectivity')
 ax1 = fig.add_subplot(111)
 ax1.set_ylabel('Reflectivity ($\%$)')
