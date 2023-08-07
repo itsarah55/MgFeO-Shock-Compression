@@ -18,10 +18,23 @@ plt.rcParams.update({
     "figure.facecolor": "black",
     "figure.edgecolor": "black",
     "savefig.facecolor": "black",
-    "savefig.edgecolor": "black"})
+    "savefig.edgecolor": "black"}) 
 
 rc('font',**{'family':'serif','serif':['Times']})
 rc('text', usetex=True)
+
+
+SMALL_SIZE = 18
+MEDIUM_SIZE = 20
+BIGGER_SIZE = 24
+
+plt.rc('font', size=SMALL_SIZE)          # controls default text sizes
+plt.rc('axes', titlesize=BIGGER_SIZE)     # fontsize of the axes title
+plt.rc('axes', labelsize=MEDIUM_SIZE)    # fontsize of the x and y labels
+plt.rc('xtick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+plt.rc('ytick', labelsize=SMALL_SIZE)    # fontsize of the tick labels
+plt.rc('legend', fontsize=SMALL_SIZE)    # legend fontsize
+plt.rc('figure', titlesize=BIGGER_SIZE)  # fontsize of the figure title
 
 up_mgo = np.asarray([14.9933])
 up_mg98 = np.asarray([14.25]),
@@ -38,8 +51,8 @@ p_mg95 =np.asarray([1442.1])
 
 gamma_mgfeo = np.asarray([0.577, 0.576, 0.578])
 
-
-
+hug_rho = np.asarray([0.356986, 0.892464, 1.784928, 3.569856, 7.139711, 8.924641, 10.709567, 14.279423, 16.064351, 17.849278, 21.419134])
+hug_p = np.asarray([1172.1])
 
 us_mccoy = np.asarray([19.7, 22.1, 22.9, 22.9, 24.4, 24.4, 24.4, 25.8, 26.8, 26.6, 28.8, 30.4, 32.0])
 up_mccoy = np.asarray([10.0, 12.3, 12.7, 12.8, 13.9, 14.0, 14.1, 15.0, 15.6, 15.7, 17.7, 19.0, 20.1])
@@ -69,44 +82,28 @@ def usupcubic(up):
 
 #us_up
 up = np.linspace(min(up_root), max(up_mccoy), (len(up_root) + len(up_mccoy)))
-
 plt.plot(up, usup(up), '--', c = '#0c72e6', label = 'linear fit')
 plt.plot(up, usupcubic(up),'--', c = '#5503be', label = 'cubic fit')
-plt.scatter(up_mccoy, us_mccoy, c = '#d7baeb', label = 'McCoy 2019', alpha = 0.7)
-plt.scatter(up_root, us_root, c = '#e4ab89', label = 'Root 2015', alpha = 0.7)
-plt.scatter(up_mcwilliams, us_mcwilliams, c='#d2bd76', label = 'McWilliams 2012', alpha = 0.7)
-plt.plot(up_mgo, us_mgo, c = '#cd00a7', label = 'MgO', marker = '*', markersize = '10')
-plt.plot(up_mg98, us_mg98, c = '#d96455', label = '(Mg$_{0.98}$,Fe$_{0.02}$)O', marker = '*', markersize = '10')
-plt.plot(up_mg95, us_mg95, c = '#e33463', label = '(Mg$_{0.95}$,Fe$_{0.05}$)O', marker = '*', markersize = '10')
-#plt.scatter(up_hansen, us_hansen, c= '#eaac8b', label = 'Hansen 2021')
-plt.xlabel('Up (km/s)')
-plt.ylabel('Us (km/s)')
-plt.legend()
-plt.show()
-
-
-plt.plot(up, usup(up), '--',c = '#5503be', label = 'linear fit')
-plt.plot(up, usupcubic(up),'--',c = '#0c72e6', label = 'cubic fit')
-plt.scatter(up_mccoy, us_mccoy, label = 'McCoy 2019', alpha = 0.7)
-plt.scatter(up_root, us_root, label = 'Root 2015', alpha = 0.7)
-plt.scatter(up_mcwilliams, us_mcwilliams, label = 'McWilliams 2012', alpha = 0.7)
-plt.scatter(up_mgo, us_mgo, 100, label = 'MgO', marker = '*')
-plt.scatter(up_mg98, us_mg98, 100, label = '(Mg$_{0.98}$,Fe$_{0.02}$)O', marker = '*')
-plt.scatter(up_mg95, us_mg95, 100, label = '(Mg$_{0.95}$,Fe$_{0.05}$)O', marker = '*')
-#plt.scatter(up_hansen, us_hansen, c= '#eaac8b', label = 'Hansen 2021')
+plt.scatter(up_mccoy, us_mccoy, c = '#8b1e3f', label = 'McCoy 2019')
+plt.scatter(up_root, us_root, c = '#db4c40', label = 'Root 2015')
+plt.scatter(up_mcwilliams, us_mcwilliams, c='#ffc857', label = 'McWilliams 2012')
+plt.plot(up_mgo, us_mgo, c = '#bce784', label = 'MgO', marker = '*', markersize = '15')
+plt.plot(up_mg98, us_mg98, c = '#5dd39e', label = '(Mg$_{0.98}$,Fe$_{0.02}$)O', marker = '*', markersize = '15')
+plt.plot(up_mg95, us_mg95, c = '#348aa7', label = '(Mg$_{0.95}$,Fe$_{0.05}$)O', marker = '*', markersize = '15')
+plt.scatter(up_hansen, us_hansen, c= '#eaac8b', label = 'Hansen 2021')
 plt.xlabel('Up (km/s)')
 plt.ylabel('Us (km/s)')
 plt.legend()
 plt.show()
 
 #density_pressure
-plt.scatter(rho_mgo, p_mgo, label = 'MgO', marker = '*')
-plt.scatter(rho_mg98, p_mg98, label = '(Mg$_{0.98}$,Fe$_{0.02}$)O', marker = '*')
-plt.scatter(rho_mg95, p_mg95, label = '(Mg$_{0.95}$,Fe$_{0.05}$)O', marker = '*')
-plt.scatter(rho_mccoy, p_mccoy, label = 'McCoy 2019')
-plt.scatter(rho_root, p_root, label = 'Root 2015')
-plt.scatter(rho_mcwilliams, p_mcwilliams, label = 'McWilliams 2012')
-plt.scatter(rho_hansen, p_hansen, label = 'Hansen 2021')
+plt.plot(rho_mgo, p_mgo, label = 'MgO', marker = '*', c = '#bce784', markersize = '15')
+plt.plot(rho_mg98, p_mg98, label = '(Mg$_{0.98}$,Fe$_{0.02}$)O', marker = '*', c = '#5dd39e', markersize = '15')
+plt.plot(rho_mg95, p_mg95, label = '(Mg$_{0.95}$,Fe$_{0.05}$)O', marker = '*', c = '#348aa7', markersize = '15')
+plt.scatter(rho_mccoy, p_mccoy, label = 'McCoy 2019', c = '#8b1e3f')
+plt.scatter(rho_root, p_root, label = 'Root 2015', c = '#db4c40')
+plt.scatter(rho_mcwilliams, p_mcwilliams, label = 'McWilliams 2012', c = '#ffc857')
+plt.scatter(rho_hansen, p_hansen, label = 'Hansen 2021', c = '#3c153b')
 plt.xlabel('Density (g/cm$^3$)')
 plt.ylabel('Pressure (GPa)')
 plt.legend()
