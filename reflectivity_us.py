@@ -5,6 +5,8 @@ from scipy import signal
 import scipy.optimize as opt
 import matplotlib.pyplot as plt
 
+"""Plots reflectivity from other MgO reflectivity"""
+
 def hill_r(us, x, b, a, n):
     return ((b-a)* (us**n))/(us **n + x **n)
     #return ((b-a)* (us**n))/(us **n + x **n) + a
