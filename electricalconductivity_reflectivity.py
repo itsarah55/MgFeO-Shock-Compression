@@ -250,6 +250,15 @@ l_38693s = bmo_l(sigma0_38693, .0006)/1e3
 l_38693m = bmo_l(sigma0_38693, .001)/1e3
 l_38693f = bmo_l(sigma0_38693, .0016)/1e3
 
+"""Plots"""
+
+up = np.linspace(0, 19, len(temp_38692))
+Z = .2 #achieving reflectivity for MgO McWilliams 2012
+mgo_sigma0,mgo_sigmaw, mgo_r = ec_model(up, temp_38692, Z) #model for McWilliams 2012
+
+print(max(mgo_sigma0)/1.e5)
+"Minimum Basal Magma Ocean Thickness"
+
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.fill_between(p38691, noise_filter(l_38691f), noise_filter(l_38691s), linestyle = '--' , color = '#63b3ce', alpha = 0.7, label ='MgO')
@@ -259,14 +268,6 @@ ax.legend()
 ax.set_xlabel ('Pressure (GPa)')
 ax.set_ylabel('Minimum BMO Thickness (km)')
 plt.show()
-
-"""Plots"""
-
-up = np.linspace(0, 19, len(temp_38692))
-Z = .2 #achieving reflectivity for MgO McWilliams 2012
-mgo_sigma0,mgo_sigmaw, mgo_r = ec_model(up, temp_38692, Z) #model for McWilliams 2012
-
-print(max(mgo_sigma0)/1.e5)
 
 "Electrical Conductivity v Pressure and Temperature "
 fig = plt.figure('Electrical Conductivity v Pressure, Temperature')
