@@ -26,6 +26,8 @@ Plots from this script include:
 Plots from script:
 
 -Shock Velocity and Particle Velocity relationship with cubic fit from Root 2015 and linear fit from McWilliams 2012
+
+Each folder 38691-4 is the shot number and their designated data files. Please email me sarah.harter55@gmail.com for the IGOR experiment files.
 -Pressure and Density 
 
 "reflectivity_us" is the reflectivity comparison from McWilliams 2012, Bolis 2016, McCoy 2019, and Hansen 2021. Our data is filtered through a low-pass filter that attenuates the high-frquencies while keeping the low-frequencies. This is in effort to filter out any noise.
